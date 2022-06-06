@@ -35,7 +35,7 @@ class ExampleComponent extends Component {
             size="normal"
             data-theme="dark"            
             render="explicit"
-            sitekey="6LdXXAsUAAAAALc4qwdnm0dKi7a9hCUmfIDJKAfz"
+            sitekey="6LezjEwgAAAAAOG4b6c2ipSE3I-VT3v2MMi4CgmE"
             onloadCallback={this.onLoadRecaptcha}
             verifyCallback={this.verifyCallback}
         />
