@@ -54,7 +54,7 @@ class FormUser extends React.Component {
                 if (error.response.data) {
                     retorno = error.response.data.messages;
                     console.log(retorno['pt-BR']);
-                    statusRet = retorno['pt-BR'];
+                    statusRet = retorno['en-US'];
                 } else {
                     retorno = error.message;
                     console.log(retorno);
