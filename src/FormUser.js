@@ -35,7 +35,7 @@ class FormUser extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log('cpt: ' + window.cpt + ' length: ' + window.cpt.length);
+        //console.log('cpt: ' + window.cpt + ' length: ' + window.cpt.length);
         if (window.cpt.length < 5) {
             alert('click on captcha to continue using the system');
             return;
