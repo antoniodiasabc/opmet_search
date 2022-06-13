@@ -95,7 +95,8 @@ class FormUser extends React.Component {
                     <p></p>
                     
 					
-                    <><ExampleComponent /><Captcha12 /></>
+                    <ExampleComponent />
+                    <Captcha12 />
 
                     <div>
                         <p className='q2' >Token: <br></br> {this.state.token}</p>
