@@ -4,8 +4,8 @@ import { ReCaptcha } from 'react-recaptcha-google';
 class ExampleComponent extends Component {
   constructor(props, context) {
     super(props, context);
-    this.onLoadRecaptcha = this.onLoadRecaptcha.bind(this);
-    this.verifyCallback = this.verifyCallback.bind(this);
+    this.onLoad = this.onLoad.bind(this);
+    this.onSuccess = this.onSuccess.bind(this);
   }
   componentDidMount() {
     if (this.captchaDemo) {
@@ -13,13 +13,13 @@ class ExampleComponent extends Component {
         //this.captchaDemo.reset();
     }
   }
-  onLoadRecaptcha() {
+  onLoad() {
       if (this.captchaDemo) {
           this.captchaDemo.reset();
           console.log("1 onload ...");
       }
   }
-  verifyCallback(recaptchaToken) {
+  onSuccess(recaptchaToken) {
     // Here you will get the final recaptchaToken!!!  
     console.log(recaptchaToken, "<= 2 your recaptcha token");
     this.setState({teste3: recaptchaToken});
@@ -37,8 +37,8 @@ class ExampleComponent extends Component {
             data-theme="dark"            
             render="explicit"
             sitekey="6LezjEwgAAAAAOG4b6c2ipSE3I-VT3v2MMi4CgmE"
-            onloadCallback={this.onLoadRecaptcha}
-            verifyCallback={this.verifyCallback} 
+            onLoad={this.onLoad}
+            onSuccess={this.onSuccess} 
         />   
       </div> 
     ); 
