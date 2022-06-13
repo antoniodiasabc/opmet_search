@@ -23,21 +23,10 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
   <title>Sistema OPMET - Brasilia</title>
-  <!-- <script src='https://www.google.com/recaptcha/api.js'></script> -->
  
-  <input type='hidden' name='recaptcha_token' id='recaptcha_token'>
+  <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
 
-  <script>
-    setInterval(function () {
-      grecaptcha.ready(function () {
-        grecaptcha.execute({'6LezjEwgAAAAAOG4b6c2ipSE3I-VT3v2MMi4CgmE'})
-          .then(function (token) {
-            document.getElementById("recaptcha_token").value = token;
-          });
-      });
-    }, 30 * 1000);
   </script>
-
 
 
 </head>
