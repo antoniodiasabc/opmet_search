@@ -26,8 +26,7 @@ class ExampleComponent extends Component {
     window.cpt = recaptchaToken;
   }
 
-  render() {
-	  window.grecaptcha ?
+  render() {	  
     return (
       <div>
         {/* You can replace captchaDemo with any ref word */}
@@ -42,7 +41,7 @@ class ExampleComponent extends Component {
             verifyCallback={this.verifyCallback} 
         />   
       </div> 
-    ); : null     
+    ); 
   };
 };
 export default ExampleComponent;
