@@ -30,6 +30,7 @@ class ExampleComponent extends Component {
     return (
       <div>
         {/* You can replace captchaDemo with any ref word */}
+		window.grecaptcha ?
         <ReCaptcha
             ref={(el) => {this.captchaDemo = el;}}
             size="normal"
@@ -37,9 +38,8 @@ class ExampleComponent extends Component {
             render="explicit"
             sitekey="6LezjEwgAAAAAOG4b6c2ipSE3I-VT3v2MMi4CgmE"
             onloadCallback={this.onLoadRecaptcha}
-            verifyCallback={this.verifyCallback}
-        />
-       
+            verifyCallback={this.verifyCallback} 
+        /> : null       
       </div>
     );
   };
