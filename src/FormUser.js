@@ -94,8 +94,8 @@ class FormUser extends React.Component {
                     <br></br>
                     <p></p>
                     
-					 { window.grecaptcha ? 
-                    <><ExampleComponent /><Captcha12 /></> : null }
+					
+                    <><ExampleComponent /><Captcha12 /></>
 
                     <div>
                         <p className='q2' >Token: <br></br> {this.state.token}</p>
