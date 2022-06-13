@@ -4,8 +4,8 @@ import { ReCaptcha } from 'react-recaptcha-google';
 class Captcha12 extends Component {
   constructor(props, context) {
     super(props, context);
-    this.onLoad = this.onLoad.bind(this);
-    this.onSuccess = this.onSuccess.bind(this);
+    this.onLoadRecaptcha = this.onLoadRecaptcha.bind(this);
+    this.verifyCallback = this.verifyCallback.bind(this);
   }
   componentDidMount() {
     if (this.captchaDemo) {
@@ -14,14 +14,14 @@ class Captcha12 extends Component {
         //this.captchaDemo.execute();
     }
   }
-  onLoad() {
+  onLoadRecaptcha() {
       if (this.captchaDemo) {
          // this.captchaDemo.reset();
           console.log("3 onload ...");
          // this.captchaDemo.execute();
       }
   }
-  onSuccess(recaptchaToken) {
+  verifyCallback(recaptchaToken) {
     // Here you will get the final recaptchaToken!!!  
     console.log(recaptchaToken, "<= 1 your recaptcha token");
   }
@@ -36,8 +36,8 @@ class Captcha12 extends Component {
             size="normal"
             render="explicit"
             sitekey="6LezjEwgAAAAAOG4b6c2ipSE3I-VT3v2MMi4CgmE"
-            onLoad={this.onLoad}
-            onSuccess={this.onSuccess}
+            onloadCallback={this.onLoadRecaptcha}
+            verifyCallback={this.verifyCallback}
         />
       </div>
     );

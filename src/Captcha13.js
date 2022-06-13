@@ -4,8 +4,8 @@ import { ReCaptcha } from 'react-recaptcha-google';
 class ExampleComponent extends Component {
   constructor(props, context) {
     super(props, context);
-    this.onLoad = this.onLoad.bind(this);
-    this.onSuccess = this.onSuccess.bind(this);
+    this.onLoadRecaptcha = this.onLoadRecaptcha.bind(this);
+    this.verifyCallback = this.verifyCallback.bind(this);
   }
   componentDidMount() {
     if (this.captchaDemo) {
@@ -13,35 +13,36 @@ class ExampleComponent extends Component {
         //this.captchaDemo.reset();
     }
   }
-  onLoad() {
+  onLoadRecaptcha() {
       if (this.captchaDemo) {
           this.captchaDemo.reset();
           console.log("1 onload ...");
       }
   }
-  onSuccess(recaptchaToken) {
+  verifyCallback(recaptchaToken) {
     // Here you will get the final recaptchaToken!!!  
     console.log(recaptchaToken, "<= 2 your recaptcha token");
     this.setState({teste3: recaptchaToken});
     window.cpt = recaptchaToken;
   }
 
-  render() {	  
+  render() {
     return (
       <div>
         {/* You can replace captchaDemo with any ref word */}
-		
+
         <ReCaptcha
             ref={(el) => {this.captchaDemo = el;}}
             size="normal"
             data-theme="dark"            
             render="explicit"
             sitekey="6LezjEwgAAAAAOG4b6c2ipSE3I-VT3v2MMi4CgmE"
-            onLoad={this.onLoad}
-            onSuccess={this.onSuccess} 
-        />   
-      </div> 
-    ); 
+            onloadCallback={this.onLoadRecaptcha}
+            verifyCallback={this.verifyCallback}
+        />
+       
+      </div>
+    );
   };
 };
 export default ExampleComponent;
