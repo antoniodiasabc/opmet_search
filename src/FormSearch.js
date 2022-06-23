@@ -6,13 +6,15 @@ class SearchForm extends React.Component {
         super(props);
 
         this.state = { searchIwxxm: false };
+        this.state = { searchTAC: false };
         this.state = { address: '' };
         this.state = { token: this.props.token };
 
         this.state = {
             estados: [{ "name": "Insert Messages in Text Format (TAC)", valor: "https://opmet.decea.mil.br/iwxxm/insertiwxxm" },
             { "name": "Insert IWXXM files (XML Format)", valor: "https://opmet.decea.mil.br/iwxxm/insertiwxxmcontent" },
-            { "name": "Search IWXXM Messages", valor: "https://opmet.decea.mil.br/iwxxm/searchiwxxm" }]
+            { "name": "Search IWXXM Messages", valor: "https://opmet.decea.mil.br/iwxxm/searchiwxxm" },        
+            { "name": "Search TAC Messages", valor: "https://opmet.decea.mil.br/redemet/consulta_redemet" }]
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -26,7 +28,11 @@ class SearchForm extends React.Component {
             console.log('search selected');
             this.setState({ searchIwxxm: true });
             this.setState({ address: 'https://opmet.decea.mil.br/iwxxm/searchiwxxm' });
-        } else {
+        }else if(event.target.name === 'cmdFunc' && event.target.value === 'https://opmet.decea.mil.br/redemet/consulta_redemet'){
+            this.setState({ searchTAC: true });
+            this.setState({ address: 'https://opmet.decea.mil.br/redemet/consulta_redemet' });
+        } 
+        else {
             this.setState({ searchIwxxm: false });
         }
     }

@@ -52,7 +52,11 @@ class SearchIwxxmMessage extends React.Component {
         console.log('address: ' + this.props.address);
         console.log('token: ' + this.props.token);
 
-        const params = "local=" + this.state.aerodrome + "&msg=" + this.state.messagetype + "&data_ini=" + this.state.dataini + "&data_fim=" + this.state.dataend;
+        var params = "local=" + this.state.aerodrome + "&msg=" + this.state.messagetype + "&data_ini=" + this.state.dataini + "&data_fim=" + this.state.dataend;
+
+        if(this.props.address === 'https://opmet.decea.mil.br/redemet/consulta_redemet'){
+            params+='&data_hora=nao';
+        }
 
         const headers = {
             'Authorization': this.props.token
@@ -60,13 +64,18 @@ class SearchIwxxmMessage extends React.Component {
 
         axios.post(this.props.address, params, { "headers": headers }).then((response) => {
             this.setState({ result: response.data });
-             console.log('consulta retornou: ' + response.data);
+           //  console.log('consulta retornou: ' + response.data);
         }).catch(error => {
-            console.log(error);
-            var ret = JSON.parse(error.request.response);
-            console.log(ret[0].messages['en-US']);
-            console.log(error.request.status);
-            this.setState({ result: ret[0].messages['en-US'] });
+            console.log(error.response.status);
+            console.log(error.message);
+            if(error.request.response){
+                var ret = JSON.parse(error.request.response);
+                console.log(ret[0].messages['en-US']);
+                console.log(error.request.status);
+                this.setState({ result: ret[0].messages['en-US'] });
+            }else{
+                this.setState({ result: error.message });
+            }
         });
 
         this.changeCursor();
